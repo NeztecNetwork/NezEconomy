@@ -5,30 +5,4 @@ api: "2.0.0"
 load: STARTUP
 author: Nayisw
 description: The best economy plugin for PowerNukkitX 2.0
-website: https://github.com/NeztecNetwork/NezEconomy
-
-commands:
-  money:
-    description: Check your balance
-    usage: "/money"
-    aliases: [bal, balance]
-  pay:
-    description: Pay another player
-    usage: "/pay <player> <amount>"
-  nezeconomy:
-    description: Admin economy commands
-    usage: "/nezeconomy <set|add|remove> <player> <amount>"
-    permission: nezeconomy.admin
-  baltop:
-    description: Show top balances
-    usage: "/baltop [page]"
-    aliases: [topmoney, balancetop]
-  nezeco:
-    description: NezEconomy admin (reload)
-    usage: "/nezeco reload"
-    permission: nezeconomy.admin
-
-permissions:
-  nezeconomy.admin:
-    description: Access to admin economy commands
-    default: op
+website: https://github.com/NeztecNetwork/NezEconomyc
