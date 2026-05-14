@@ -3,12 +3,22 @@ package com.neztec.command;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
+
 import com.neztec.api.EconomyAPI;
 import com.neztec.api.EconomyProvider;
 
 public class PayCommand extends Command {
+
     public PayCommand() {
         super("pay", "Pay another player", "/pay <player> <amount>");
+
+        addCommandParameters("default", new CommandParameter[]{
+                CommandParameter.newType("player", false, CommandParamType.TARGET),
+                CommandParameter.newType("amount", false, CommandParamType.FLOAT)
+        });
+    
     }
 
     @Override
@@ -29,7 +39,8 @@ public class PayCommand extends Command {
         double amount;
         try {
             amount = Double.parseDouble(args[1]);
-            if (amount <= 0) throw new NumberFormatException();
+            if (amount <= 0)
+                throw new NumberFormatException();
         } catch (NumberFormatException e) {
             sender.sendMessage("§cAmount must be a positive number.");
             return true;

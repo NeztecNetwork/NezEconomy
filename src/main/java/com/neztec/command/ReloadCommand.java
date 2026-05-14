@@ -2,12 +2,19 @@ package com.neztec.command;
 
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParameter;
+
 import com.neztec.NezEconomyPlugin;
 
 public class ReloadCommand extends Command {
     public ReloadCommand() {
         super("nezeco", "NezEconomy admin commands", "/nezeco reload");
         setPermission("nezeconomy.admin");
+
+        addCommandParameters("default", new CommandParameter[]{
+                CommandParameter.newEnum("reloadAction", new String[]{"reload"}),
+        });
+
     }
 
     @Override

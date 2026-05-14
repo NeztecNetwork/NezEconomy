@@ -3,13 +3,25 @@ package com.neztec.command;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
+
 import com.neztec.api.EconomyAPI;
 import com.neztec.api.EconomyProvider;
 
 public class AdminEconomyCommand extends Command {
+
     public AdminEconomyCommand() {
+
         super("nezeconomy", "Admin economy management", "/nezeconomy <set|add|remove> <player> <amount>");
+
         setPermission("nezeconomy.admin");
+
+        addCommandParameters("default", new CommandParameter[]{
+                CommandParameter.newEnum("adminAction", new String[]{"set", "add", "remove"}),
+                CommandParameter.newType("player", CommandParamType.TARGET),
+                CommandParameter.newType("amount", CommandParamType.FLOAT)
+        });
     }
 
     @Override

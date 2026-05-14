@@ -2,6 +2,8 @@ package com.neztec.command;
 
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
 import com.neztec.NezEconomyPlugin;
 import com.neztec.api.EconomyAPI;
 import com.neztec.api.EconomyProvider;
@@ -15,6 +17,16 @@ public class BaltopCommand extends Command {
     public BaltopCommand() {
         super("baltop", "Show the richest players", "/baltop [page]");
         setAliases(new String[]{"topmoney", "balancetop"});
+
+        addCommandParameters("default", new CommandParameter[]{
+                CommandParameter.newType("page", true, CommandParamType.INT)
+        });
+
+    }
+
+    @Override
+    public CommandParameter[] getCommandParameters(String key) {
+        return new CommandParameter[0];
     }
 
     @Override
