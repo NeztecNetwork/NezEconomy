@@ -28,7 +28,7 @@ public class NezEconomyPlugin extends PluginBase {
     @Override
     public void onLoad() {
         instance = this;
-        saveDefaultConfig(); // copies config.yml from jar to plugin folder
+        saveDefaultConfig();
         getLogger().info(TextFormat.WHITE + "NezEconomy loaded!");
     }
 
@@ -58,10 +58,10 @@ public class NezEconomyPlugin extends PluginBase {
         EconomyAPI.setInstance(economyService);
 
         // 6. Register commands
-        getServer().getCommandMap().register("money", new MoneyCommand());
-        getServer().getCommandMap().register("pay", new PayCommand());
-        getServer().getCommandMap().register("nezeconomy", new AdminEconomyCommand());
-        getServer().getCommandMap().register("baltop", new BaltopCommand());
+        getServer().getCommandMap().register("nezeco", new MoneyCommand());
+        getServer().getCommandMap().register("nezeco", new PayCommand());
+        getServer().getCommandMap().register("nezeco", new AdminEconomyCommand());
+        getServer().getCommandMap().register("nezeco", new BaltopCommand());
         getServer().getCommandMap().register("nezeco", new ReloadCommand());
 
         // 7. Register listeners
@@ -74,9 +74,10 @@ public class NezEconomyPlugin extends PluginBase {
 
     @Override
     public void onDisable() {
-        if (economyService != null) {
-            economyService.saveAll();
-        }
+        if (economyService != null) economyService.saveAll();
+
+        if (storage != null) storage.close();
+
         getLogger().info(TextFormat.RED + "NezEconomy disabled.");
     }
 
