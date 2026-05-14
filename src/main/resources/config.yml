@@ -1,0 +1,20 @@
+# NezEconomy Configuration
+
+currency:
+  symbol: "$"
+  format: "#,###.##"
+  suffix: ""
+  thousand-separator: ","
+  decimal-separator: "."
+  starting-balance: 100.0
+
+storage:
+  type: yaml   # Options: yaml, sqlite, mysql
+
+mysql:
+  host: localhost
+  port: 3306
+  database: nezeconomy
+  username: root
+  password: ""
+  pool-size: 10
