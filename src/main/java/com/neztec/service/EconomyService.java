@@ -18,7 +18,7 @@ public class EconomyService implements EconomyProvider {
     private final StorageProvider storage;
     private final Map<UUID, Double> cache = new ConcurrentHashMap<>();
     private final Map<UUID, ReentrantLock> locks = new ConcurrentHashMap<>();
-    private CurrencyFormatter formatter;
+    private volatile CurrencyFormatter formatter;
 
     public EconomyService(StorageProvider storage, CurrencyFormatter formatter, NezEconomyPlugin plugin) {
         this.storage = storage;
