@@ -111,7 +111,10 @@ public class MySQLStorage implements StorageProvider {
     public void saveAll() {
     }
 
+    @Override
     public void close() {
-        if (dataSource != null) dataSource.close();
+        if (dataSource != null && !dataSource.isClosed()) {
+            dataSource.close();
+        }
     }
 }

@@ -18,4 +18,8 @@ public interface StorageProvider {
     List<Map.Entry<UUID, Double>> getTopBalances(int limit);
 
     void saveAll();
+
+    default void close() {
+    }
+
 }

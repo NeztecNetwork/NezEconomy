@@ -15,8 +15,11 @@ public class SQLiteStorage implements StorageProvider {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:sqlite:" + plugin.getDataFolder().getAbsolutePath() + "/economy.db");
         config.setMaximumPoolSize(5);
+        config.setDriverClassName("org.sqlite.JDBC");
+
         config.addDataSourceProperty("journal_mode", "WAL");
         config.addDataSourceProperty("busy_timeout", "5000");
+
         dataSource = new HikariDataSource(config);
 
         try (Connection conn = dataSource.getConnection();
@@ -105,7 +108,10 @@ public class SQLiteStorage implements StorageProvider {
     public void saveAll() {
     }
 
+    @Override
     public void close() {
-        if (dataSource != null) dataSource.close();
+        if (dataSource != null && !dataSource.isClosed()) {
+            dataSource.close();
+        }
     }
 }

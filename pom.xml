@@ -83,10 +83,6 @@
                                     <shadedPattern>com.neztec.libs.hikari</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>org.sqlite</pattern>
-                                    <shadedPattern>com.neztec.libs.sqlite</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>com.mysql</pattern>
                                     <shadedPattern>com.neztec.libs.mysql</shadedPattern>
                                 </relocation>
